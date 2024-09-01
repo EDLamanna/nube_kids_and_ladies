@@ -1,0 +1,499 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* Reset global */
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Layout general */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+/* Barra de navegación */
+.navbar {
+  background-color: #FFB6C1;
+}
+
+.logo-nav {
+  width: 12em;
+}
+
+/* Pie de página */
+footer {
+  background-color: #09b4a6;
+  padding: '20px 0';
+}
+
+.rrss {
+  width: 20%;
+}
+
+.logo-footer {
+  max-width: 100%;
+}
+
+.metodo-pago-footer {
+  max-height: 5em;
+}
+
+.rigths-reserve {
+  font-size: 0.7em;
+}
+
+/* Componente Store */
+.store {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 5em;
+}
+
+.titulo-tienda {
+  margin: 1.5em 0 1.5em 0;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 5em;
+}
+
+@media (min-width: 768px) {
+  .product-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Componente CardProducts */
+.card {
+  width: 19em;
+  height: 19em;
+  border: 0;
+}
+
+.card__header {
+  border-radius: 2em;
+  width: 100%;
+  height: 12em;
+  overflow: hidden;
+}
+
+.card__header-item {
+  display: flex;
+}
+
+.card__header-img {
+  width: 100%;
+  height: 12em;
+  transition: transform 0.3s ease;
+}
+
+.card__header-img:hover {
+  transform: scale(1.1);
+}
+
+.icon-like {
+  color: grey; /* Color predeterminado cuando no es favorito */
+  font-size: 2em;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.icon-like.favorite {
+  color: red; /* Color rojo cuando está en favoritos */
+}
+
+.icon-buy {
+  color: rgb(246, 178, 167);
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.card__price {
+  background-color: rgb(255, 252, 252);
+  width: 8em;
+  height: 2.5em;
+  border-radius: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin-top: -1.3em;
+  margin-left: 9.7em;
+}
+
+.card__price-title {
+  font-weight: lighter;
+  font-size: 1em;
+}
+
+.card__body {
+  height: 2em;
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 0.4em;
+}
+
+.card__body-title {
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.card__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+}
+
+/* Componente Alert */
+.alert {
+  position: relative;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.close {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+}
+
+/* Componente Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 1050; /* Mayor que el fondo */
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal-dialog {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 0.3rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+}
+
+.modal-backdrop.fade.show {
+  opacity: 0.5;
+}
+
+/* Componente Profile */
+.icon-delete {
+  color: red;
+  cursor: pointer;
+  margin-left: 0.6em;
+  font-size: 1.4em;
+}
+
+.icon-delete:hover {
+  color: darkred;
+}
+
+/* Componente BuyCar */
+.bgCarBuy {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.carBuyContainer {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.titleCarBuy {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.productSelectedContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+
+.imgProductSelected {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.detailsContainer {
+  width: 100%;
+  margin-left: 20px;
+  display: flex;
+}
+
+.nameProduct {
+  width: 40%;
+  font-size: 1.2em;
+  margin: 0;
+  color: black;
+  padding: 0;
+}
+
+.sizeProduct {
+  font-size: 1rem;
+  color: #666;
+}
+
+.salesContainer {
+  display: flex;
+  align-items: center;
+}
+
+.netProduct {
+  font-size: 1.2rem;
+  margin-right: 20px;
+}
+
+.btnMinus,
+.btnPlus {
+  width: 35px;
+  height: 35px;
+  font-size: 1.2rem;
+  background-color: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.btnMinus:disabled {
+  cursor: not-allowed;
+}
+
+.payBtn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.payBtn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Componente Favorites */
+.favorites {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 5em;
+}
+
+.titulo-favoritos {
+  text-align: center;
+  font-size: 2em;
+  margin: 1em 0 1.5em 0;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7em;
+  margin-bottom: 2.8em;
+}
+
+.icon-like.active {
+  color: red;
+}
+
+/* Componente CrearPublicacion */
+.image-preview {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Botones y enlaces generales */
+.more-btn {
+  display: flex;
+  background-color: rgb(67, 148, 178);
+  align-items: center;
+  justify-content: center;
+  width: 9em;
+  height: 2.5em;
+  color: white;
+  border-radius: 10px;
+}
+
+.link-to-tienda {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Sección de iconos de beneficios */
+.iconos-beneficios {
+  color: #333;
+}
+
+.beneficio-titulo {
+  margin-top: 0.3em;
+  font-size: 1.2em;
+}
+
+.beneficios {
+  margin-top: 10px;
+  font-size: 1.3em;
+  color: #555;
+}
+
+/* Sección de categorías */
+.category-container {
+  margin: 5em 0;
+}
+
+.category-card-woman {
+  background-image: url(./src/assets/imgs/woman.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 30em;
+  transition: transform 0.5s ease;
+}
+
+.category-card-little-girl {
+  background-image: url(./src/assets/imgs/little-girl.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 30em;
+  transition: transform 0.5s ease;
+}
+
+.category-card-woman:hover, .category-card-little-girl:hover {
+  transform: scale(1.2);
+}
+
+h3 {
+  height: 40%;
+  width: 40%;
+  color: white;
+  display: flex;
+  align-items: end;
+  font-size: 24px;
+  padding: 0.5em;
+}
+
+/* Sección de marcas */
+.brands {
+  width: 100%;
+  margin: auto;
+}
+
+.desc-brands {
+  background-color: rgba(116, 190, 239, 0.201);
+  border-radius: 50px 10px 50px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.marcas-img {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10em;
+  margin: auto;
+  animation: movimiento 8s alternate infinite;
+}
+
+.marcas {
+  width: 12em;
+}
+
+@keyframes movimiento {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Detalles del producto */
+.img-detail {
+  cursor: pointer;
+}
+
+/* Pedidos y Ventas */
+.container-pedidos, .container-ventas {
+  min-height: 100vh;
+}
