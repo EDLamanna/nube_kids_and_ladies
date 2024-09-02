@@ -14,6 +14,7 @@ import Favorites from '../view/Favorites.jsx'
 import MisPedidos from '../view/MisPedidos.jsx'
 import Ventas from '../view/Ventas.jsx'
 import CrearPublicacion from '../view/CrearPublicacion.jsx'
+import NotFound from './NotFound.jsx'
 
 const AppRoutes = () => {
   const location = useLocation()
@@ -80,6 +81,10 @@ const AppRoutes = () => {
               <BuyCar />
             </PrivateRoute>
           }
+        />
+        <Route
+          path='*'
+          element={<NotFound />}
         />
       </Routes>
 

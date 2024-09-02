@@ -1,4 +1,4 @@
-@import 'bootstrap/dist/css/bootstrap.min.css';
+@import "bootstrap/dist/css/bootstrap.min.css";
 
 /* Reset global */
 * {
@@ -14,7 +14,8 @@ a {
 }
 
 /* Layout general */
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
@@ -31,7 +32,7 @@ main {
 
 /* Barra de navegación */
 .navbar {
-  background-color: #FFB6C1;
+  background-color: #ffb6c1;
 }
 
 .logo-nav {
@@ -41,7 +42,7 @@ main {
 /* Pie de página */
 footer {
   background-color: #09b4a6;
-  padding: '20px 0';
+  padding: "20px 0";
 }
 
 .rrss {
@@ -437,7 +438,8 @@ footer {
   transition: transform 0.5s ease;
 }
 
-.category-card-woman:hover, .category-card-little-girl:hover {
+.category-card-woman:hover,
+.category-card-little-girl:hover {
   transform: scale(1.2);
 }
 
@@ -494,6 +496,29 @@ h3 {
 }
 
 /* Pedidos y Ventas */
-.container-pedidos, .container-ventas {
+.container-pedidos,
+.container-ventas {
   min-height: 100vh;
+}
+
+/* Not found */
+.notfound-container {
+  text-align: center;
+  padding: 3.4em;
+}
+
+.notfound-title {
+  font-size: 3em;
+  margin-bottom: 1em;
+}
+
+.notfound-message {
+  font-size: 1.2em;
+  margin-bottom: 1.5em;
+}
+
+.notfound-link {
+  font-size: 1.2em;
+  color: #007bff;
+  text-decoration: none;
 }
