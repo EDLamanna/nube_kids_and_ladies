@@ -13,19 +13,17 @@ const ProductDetail = () => {
   const [error, setError] = useState(null)
   const [selectedTalla, setSelectedTalla] = useState('')
   const [quantity, setQuantity] = useState(1)
-  const [selectedImage, setSelectedImage] = useState(null) // Estado para la imagen seleccionada
+  const [selectedImage, setSelectedImage] = useState(null)
 
   const { addToCart } = useContext(CartContext)
 
   useEffect(() => {
     const fetchProducto = async () => {
       try {
-        const response = await axios.get(
-          `${URLBASE}/tienda/${productoId}`
-        )
+        const response = await axios.get(`${URLBASE}/tienda/${productoId}`)
         setProducto(response.data)
-        setSelectedTalla(response.data.tallas[0]) // Inicializa con la primera talla que sale en el arreglo del back
-        setSelectedImage(response.data.image_urls[0]) // Inicializa con la primera imagen que sale en el arreglo del back
+        setSelectedTalla(response.data.tallas[0])
+        setSelectedImage(response.data.image_urls[0])
       } catch (err) {
         setError('Error al cargar el producto')
       } finally {
@@ -49,12 +47,13 @@ const ProductDetail = () => {
 
     const tallaIndex = producto.tallas.findIndex(t => t === selectedTalla)
     const tallaId = producto.talla_id[tallaIndex]
+    const productoGeneralId = producto.producto_general_id[0]
 
     addToCart({
       ...producto,
       talla: selectedTalla,
       talla_id: tallaId,
-      producto_general_id: producto.producto_general_id,
+      producto_general_id: productoGeneralId,
       quantity
     })
 
@@ -89,11 +88,10 @@ const ProductDetail = () => {
     <Container className='my-5'>
       <Row>
         <Col md={6} className='mb-4'>
-          {selectedImage && (
-            <Image src={selectedImage} alt={producto.nombre} fluid />
-          )}
+          {selectedImage && <Image src={selectedImage} alt={producto.nombre} fluid />}
           <div className='d-flex justify-content-between mt-3'>
-            {producto.image_urls && producto.image_urls.length > 0 && (
+            {producto.image_urls &&
+              producto.image_urls.length > 0 &&
               producto.image_urls.map((url, index) => (
                 <Image
                   key={index}
@@ -103,8 +101,7 @@ const ProductDetail = () => {
                   className='w-25 img-detail'
                   onClick={() => setSelectedImage(url)}
                 />
-              ))
-            )}
+              ))}
           </div>
         </Col>
         <Col md={6}>
@@ -115,26 +112,19 @@ const ProductDetail = () => {
             <Form.Group controlId='selectTalla'>
               <Form.Label>Talla</Form.Label>
               <Form.Control as='select' value={selectedTalla} onChange={(e) => setSelectedTalla(e.target.value)}>
-                {producto.tallas && producto.tallas.length > 0 && (
+                {producto.tallas &&
+                  producto.tallas.length > 0 &&
                   producto.tallas.map((talla, index) => (
                     <option key={index} value={talla}>
                       {talla}
                     </option>
-                  ))
-                )}
-                {(!producto.tallas || producto.tallas.length === 0) && (
-                  <option>No disponible</option>
-                )}
+                  ))}
+                {(!producto.tallas || producto.tallas.length === 0) && <option>No disponible</option>}
               </Form.Control>
             </Form.Group>
             <Form.Group controlId='cantidad' className='mt-3'>
               <Form.Label>Cantidad</Form.Label>
-              <Form.Control
-                type='number'
-                value={quantity}
-                min={1}
-                onChange={(e) => setQuantity(Number(e.target.value))}
-              />
+              <Form.Control type='number' value={quantity} min={1} onChange={(e) => setQuantity(Number(e.target.value))} />
             </Form.Group>
             <Button variant='primary' className='mt-4' onClick={handleAddToCart}>
               Añadir al carrito
