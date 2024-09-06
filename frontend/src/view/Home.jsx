@@ -96,6 +96,8 @@ const Home = () => {
               <CardProducts product={product} />
             </div>
           ))}
+        </div>
+        <div className='row'>
           {pijamasNina.map((product) => (
             <div className='col-12 col-md-4 mb-4' key={product.id}>
               <CardProducts product={product} />

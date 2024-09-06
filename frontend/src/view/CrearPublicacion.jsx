@@ -32,7 +32,7 @@ const CrearPublicacion = () => {
   }, [])
 
   const validarTexto = (texto) => {
-    const regex = /^[a-zA-Z0-9\s,.\-()=?!¿¡/1*]*$/
+    const regex = /^[a-zA-Z0-9\s,.\-()=?!¿¡ñÑ%/áéíóúÁÉÍÓÚüÜ*]*$/
     return regex.test(texto)
   }
 
@@ -264,6 +264,7 @@ const CrearPublicacion = () => {
                         <img
                           src={img.preview}
                           alt={`Preview ${index + 1}`}
+                          className='image-preview'
                         />
                         <Button
                           variant='danger'
