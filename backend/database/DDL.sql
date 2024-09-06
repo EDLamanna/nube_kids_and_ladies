@@ -116,16 +116,6 @@ CREATE TABLE imagenes_productos (
     FOREIGN KEY (producto_general_id) REFERENCES productos (producto_general_id)
 );
 
--- Tabla LIKES
-CREATE TABLE likes (
-    id SERIAL,
-    usuario_id VARCHAR(10) NOT NULL,
-    producto_general_id INT NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-    FOREIGN KEY (producto_general_id) REFERENCES productos (producto_general_id)
-);
-
 -- Tabla VENTAS
 CREATE TABLE ventas (
     id SERIAL,

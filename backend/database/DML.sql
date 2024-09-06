@@ -3,10 +3,10 @@ INSERT INTO usuarios (id, nombre, apellido_paterno, apellido_materno, fecha_naci
 ('25257529-4', 'Edwin', 'Lamanna', 'Velazquez', '04-02-1989', 'elamannav@gmail.com', DEFAULT, 'pharma5+'),
 ('25254097-0', 'onnaive', 'Nebreda', 'Velazquez', '01-02-1987', 'onnaivenebreda@gmail.com',DEFAULT, '303030');
 
---Se inserta directamente desde el front, se insertara automaticamente como transaccion al momento de crear el usuario en el front
+--Se inserta directamente desde el front, pero se insertara automaticamente como transaccion al momento de crear el usuario en el front
 INSERT INTO usuario_info (id, Usuario_id, direccion, nro_calle, vivienda_id, nro_departamento, bloque_departamento, region_id, comuna_id, telefono_movil, telefono_fijo) VALUES
-(DEFAULT, '25257529-4', 'gaugin 1991', '1991', 1, '', '', 13, 290, '945126062', ''),
-(DEFAULT, '25254097-0', 'gaugin 1991', '1991', 1, '', '', 13, 290, '945126062', '');
+(DEFAULT, '25257529-4', '', '', 1, '', '', 1, 1, '', ''),
+(DEFAULT, '25254097-0', '', '', 1, '', '', 1, 1, '', '');
 
 -- despues de crear el primer usuario en el front, se debe modificar el campo rol_id para que sea 1 (administrador)
 UPDATE usuarios SET rol_id = 1 WHERE id = '25257529-4';
