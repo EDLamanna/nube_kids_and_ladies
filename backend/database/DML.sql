@@ -1,6 +1,6 @@
 --Se inserta directamente desde el front
 INSERT INTO usuarios (id, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, email, rol_id, contraseña) VALUES
-('25257529-4', 'Edwin', 'Lamanna', 'Velazquez', '04-02-1989', 'elamannav@gmail.com', DEFAULT, 'pharma5+'),
+('25257529-4', 'Edwin', 'Lamanna', 'Velazquez', '04-02-1989', 'elamannav@gmail.com', 2, 'pharma5+'),
 ('25254097-0', 'onnaive', 'Nebreda', 'Velazquez', '01-02-1987', 'onnaivenebreda@gmail.com',DEFAULT, '303030');
 
 --Se inserta directamente desde el front, pero se insertara automaticamente como transaccion al momento de crear el usuario en el front
