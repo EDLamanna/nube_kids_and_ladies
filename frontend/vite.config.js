@@ -8,6 +8,8 @@ export default defineConfig({
     outDir: 'dist'
   },
   server: {
-    port: 3000
+    host: true,
+    port: process.env.PORT || 3000,
+    strictPort: true
   }
 })
