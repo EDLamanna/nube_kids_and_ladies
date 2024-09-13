@@ -32,7 +32,7 @@ const CrearPublicacion = () => {
   }, [])
 
   const validarTexto = (texto) => {
-    const regex = /^[a-zA-Z0-9\s,.\-()=?!¿¡ñÑ%/áéíóúÁÉÍÓÚüÜ*]*$/
+    const regex = /^[a-zA-Z0-9\s,.:\-()=?!¿¡ñÑ%/áéíóúÁÉÍÓÚüÜ*]*$/
     return regex.test(texto)
   }
 
