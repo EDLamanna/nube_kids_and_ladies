@@ -114,21 +114,18 @@ export const createUsuarioController = async (req, res) => {
   const usuarioData = req.body
 
   try {
-    // Convierte el email ingresado a minúsculas antes de hacer cualquier operación
-    const normalizedEmail = usuarioData.email.toLowerCase()
+    // Convertir el email ingresado a minúsculas antes de guardarlo
+    usuarioData.email = usuarioData.email.toLowerCase()
 
     // Verifica si el email ya está en uso
     const existingUserQuery = 'SELECT id FROM usuarios WHERE email = $1'
-    const existingUser = await db(existingUserQuery, [normalizedEmail])
+    const existingUser = await db(existingUserQuery, [usuarioData.email])
 
     if (existingUser.rowCount > 0) {
       return res.status(400).json({ message: 'El email ya está en uso' })
     }
 
-    // Actualiza el email del usuarioData con el correo en minúsculas
-    usuarioData.email = normalizedEmail
-
-    // Crear el nuevo usuario
+    // Crea el nuevo usuario
     const newUser = await createUsuario(usuarioData)
 
     res.status(201).json({
