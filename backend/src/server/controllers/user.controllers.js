@@ -30,7 +30,7 @@ export const loginController = async (req, res) => {
     }
 
     // Verifica las credenciales utilizando la función
-    const isMatch = await verificarCredenciales(email, contraseña)
+    const isMatch = await verificarCredenciales(normalizedEmail, contraseña)
 
     if (!isMatch) {
       return res.status(401).json({ message: 'Usuario o contraseña incorrecta' })
