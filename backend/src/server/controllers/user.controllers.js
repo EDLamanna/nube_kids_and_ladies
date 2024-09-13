@@ -19,8 +19,11 @@ export const loginController = async (req, res) => {
   }
 
   try {
+    // Convierte el email a minúsculas antes de buscarlo en la base de datos
+    const normalizedEmail = email.toLowerCase()
+
     // Busca al usuario por su email utilizando `findUserByEmail`
-    const usuario = await findUserByEmail(email)
+    const usuario = await findUserByEmail(normalizedEmail)
 
     if (!usuario) {
       return res.status(401).json({ message: 'Usuario o contraseña incorrecta' })
@@ -111,13 +114,19 @@ export const createUsuarioController = async (req, res) => {
   const usuarioData = req.body
 
   try {
+    // Convierte el email ingresado a minúsculas antes de hacer cualquier operación
+    const normalizedEmail = usuarioData.email.toLowerCase()
+
     // Verifica si el email ya está en uso
     const existingUserQuery = 'SELECT id FROM usuarios WHERE email = $1'
-    const existingUser = await db(existingUserQuery, [usuarioData.email])
+    const existingUser = await db(existingUserQuery, [normalizedEmail])
 
     if (existingUser.rowCount > 0) {
       return res.status(400).json({ message: 'El email ya está en uso' })
     }
+
+    // Actualiza el email del usuarioData con el correo en minúsculas
+    usuarioData.email = normalizedEmail
 
     // Crear el nuevo usuario
     const newUser = await createUsuario(usuarioData)
